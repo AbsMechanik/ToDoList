@@ -28,12 +28,18 @@ class AddToDoViewController: UIViewController
     {
         
         let toDo = ToDoClass()
-        toDo.itemName = itemNameTextField.text!
-        toDo.important = importantSwitch.isOn
+        //handling the special case where itemNameTextField
+        //returns a nil when the Optional is unwrapped
+        if let itemNameUnwrapped = itemNameTextField.text
+        {
+            toDo.itemName = itemNameUnwrapped
+            toDo.important = importantSwitch.isOn
+            
+            previousViewController.toDoItems.append(toDo)
+            previousViewController.tableView.reloadData()
+            
+            navigationController?.popViewController(animated: true)
+        }
         
-        previousViewController.toDoItems.append(toDo)
-        previousViewController.tableView.reloadData()
-        
-        navigationController?.popViewController(animated: true)
     }
 }

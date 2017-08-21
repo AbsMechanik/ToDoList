@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5yT-3a-FkC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5yT-3a-FkC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,10 +39,54 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="mGj-WX-Gle" kind="show" identifier="moveToComplete" id="tA2-rr-br1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMn-l9-UJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="671" y="99"/>
+        </scene>
+        <!--Complete To Do Item View Controller-->
+        <scene sceneID="PVY-rL-mox">
+            <objects>
+                <viewController id="mGj-WX-Gle" customClass="CompleteToDoItemViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hem-rX-7Ip">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doH-UB-t9L">
+                                <rect key="frame" x="5" y="124" width="365" height="45.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aiw-7I-AAf">
+                                <rect key="frame" x="153.5" y="241" width="67" height="30"/>
+                                <state key="normal" title="Complete"/>
+                                <connections>
+                                    <action selector="completeTapped:" destination="mGj-WX-Gle" eventType="touchUpInside" id="8nn-f1-scY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Aiw-7I-AAf" firstAttribute="top" secondItem="doH-UB-t9L" secondAttribute="bottom" constant="71.5" id="6vz-9S-Bh9"/>
+                            <constraint firstItem="doH-UB-t9L" firstAttribute="centerX" secondItem="Hem-rX-7Ip" secondAttribute="centerX" id="Atg-sM-W6r"/>
+                            <constraint firstItem="Aiw-7I-AAf" firstAttribute="centerX" secondItem="Hem-rX-7Ip" secondAttribute="centerX" id="AyA-bn-974"/>
+                            <constraint firstItem="doH-UB-t9L" firstAttribute="top" secondItem="cLI-dk-ccB" secondAttribute="top" constant="60" id="EU8-Fh-tFu"/>
+                            <constraint firstItem="cLI-dk-ccB" firstAttribute="trailing" secondItem="doH-UB-t9L" secondAttribute="trailing" constant="5" id="hD5-gj-VWD"/>
+                            <constraint firstItem="doH-UB-t9L" firstAttribute="leading" secondItem="cLI-dk-ccB" secondAttribute="leading" constant="5" id="sQH-d2-E3Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cLI-dk-ccB"/>
+                    </view>
+                    <connections>
+                        <outlet property="itemNameLabel" destination="doH-UB-t9L" id="Uul-2T-D1g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2tr-24-bfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="670" y="800"/>
         </scene>
         <!--Add To Do View Controller-->
         <scene sceneID="I4D-ZM-kWY">
@@ -113,7 +157,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5yT-3a-FkC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V4h-3q-0HE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
