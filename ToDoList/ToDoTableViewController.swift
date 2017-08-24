@@ -10,15 +10,36 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
     
-    var toDoItems: [ToDoClass] = []
+    var toDoItems: [ToDoCoreData] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        toDoItems = createToDoItems()
     }
     
-    //test function to display items on the To Do List view
+    override func viewWillAppear(_ animated: Bool) {
+        getToDos()
+    }
+    
+    func getToDos()
+    {
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        {
+            
+           if let coreDataToDos = try? context.fetch(ToDoCoreData.fetchRequest()) as? [ToDoCoreData]
+           {
+            if let theToDos = coreDataToDos
+            {
+                toDoItems = theToDos
+                tableView.reloadData()
+            }
+            
+            }
+            
+        }
+    }
+    
+/*    //test function to display items on the To Do List view
     //this function creates and stores ToDoClass objects
     func createToDoItems() -> [ToDoClass]
     {
@@ -35,7 +56,7 @@ class ToDoTableViewController: UITableViewController {
         
         return [eggs, dog, dinner]
     }
-
+*/
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return toDoItems.count
@@ -47,15 +68,18 @@ class ToDoTableViewController: UITableViewController {
         
         let toDoDisplay = toDoItems[indexPath.row]
         
-        if toDoDisplay.important
+        if let name = toDoDisplay.itemName
         {
-            cell.textLabel?.text = "❗️" + toDoDisplay.itemName
+            if toDoDisplay.important
+            {
+                cell.textLabel?.text = "❗️" + name
+            }
+            else
+            {
+                cell.textLabel?.text = toDoDisplay.itemName
+            }
         }
         
-        else
-        {
-            cell.textLabel?.text = toDoDisplay.itemName
-        }
         return cell
     }
     
@@ -73,7 +97,7 @@ class ToDoTableViewController: UITableViewController {
         
         if let completeViewController = segue.destination as? CompleteToDoItemViewController
         {
-            if let toDoSender = sender as? ToDoClass
+            if let toDoSender = sender as? ToDoCoreData
             {
                 completeViewController.selectedToDoItem = toDoSender
                 completeViewController.previousViewController = self

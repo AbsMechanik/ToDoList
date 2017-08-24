@@ -45,7 +45,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMn-l9-UJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="671" y="99"/>
+            <point key="canvasLocation" x="926" y="99"/>
         </scene>
         <!--Complete To Do Item View Controller-->
         <scene sceneID="PVY-rL-mox">
@@ -86,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2tr-24-bfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="671" y="876"/>
+            <point key="canvasLocation" x="926" y="869"/>
         </scene>
         <!--Add To Do View Controller-->
         <scene sceneID="I4D-ZM-kWY">
@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DPC-Q3-1cd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="99"/>
+            <point key="canvasLocation" x="1671" y="99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4yD-aS-hB8">

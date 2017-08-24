@@ -26,7 +26,7 @@ class AddToDoViewController: UIViewController
     
     @IBAction func addButtonTapped(_ sender: Any)
     {
-        
+ /*
         let toDo = ToDoClass()
         //handling the special case where itemNameTextField
         //returns a nil when the Optional is unwrapped
@@ -40,6 +40,21 @@ class AddToDoViewController: UIViewController
             
             navigationController?.popViewController(animated: true)
         }
+*/
         
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        {
+            let toDo = ToDoCoreData(entity: ToDoCoreData.entity(), insertInto: context)
+            
+            if let itemNameUnwrapped = itemNameTextField.text
+            {
+                toDo.itemName = itemNameUnwrapped
+                toDo.important = importantSwitch.isOn
+            }
+            
+            try? context.save()
+            navigationController?.popViewController(animated: true)
+            
+        }
     }
 }
